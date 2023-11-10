@@ -17,12 +17,14 @@ import javax.swing.JOptionPane;
 public class GUI extends javax.swing.JFrame {
     
     List<Zvanje> zvanja = new ArrayList<>();
+    DB db;
 
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+        db = new DB();
         
         prepare();
         setLocationRelativeTo(null);
@@ -124,6 +126,14 @@ public class GUI extends javax.swing.JFrame {
        
         System.out.println(nastavnik.getZvanje());
         
+        try {
+        db.saveNastavnik(nastavnik);
+        } catch (Exception ex){
+            JOptionPane.showMessageDialog(rootPane, "GRESKA");
+        }
+               
+        
+        
         
     }//GEN-LAST:event_btnSacuvajActionPerformed
     private void prepare(){
@@ -132,7 +142,6 @@ public class GUI extends javax.swing.JFrame {
 //        zvanja.add(new Zvanje(3, "Vanr Prof"));
 //        zvanja.add(new Zvanje(4, "Red Prof"));
 
-        DB db = new DB();
         zvanja = db.getAllZvanja();
         
         cmbZvanje.addItem("");
@@ -146,6 +155,7 @@ public class GUI extends javax.swing.JFrame {
         }
         
     }
+    
     private boolean validacija(){
         String ime = txtIme.getText();
         String prezime = txtPrezime.getText();

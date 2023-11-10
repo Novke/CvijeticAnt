@@ -56,6 +56,17 @@ public class Nastavnik {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Nastavnik{" + "ime=" + ime + ", prezime=" + prezime + ", id=" + id + ", zvanje=" + zvanje + '}';
+    }
+
+    public String ispis() {
+        return ime + " " + prezime + "m " + zvanje;
+             
+    }
+    
     
     
     
